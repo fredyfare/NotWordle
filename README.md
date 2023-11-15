@@ -34,7 +34,7 @@ npm run dev
 
 Here are the bugs that I encountered while following the tutorial:
 
-- Letters that appear in the correct word but not in the correct position were not being highlighted in yellow. (Changed to uppercase the correct word in almost const of the Letter.jsx file)
+- Letters that appear in the correct word but not in the correct position were not being highlighted in yellow. (Modified to uppercase the correct word in almost const of the Letter.jsx file)
   
   **Before**
   ``` javascript
@@ -46,9 +46,9 @@ Here are the bugs that I encountered while following the tutorial:
    const almost =
     !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
   ``` 
-- The GameOver component was not being displayed when the correct word was guessed in any attempt. (Changed the todaysWord from words.js file to uppercase)
+- The GameOver component was not being displayed when the correct word was guessed in any attempt. (Modified the todaysWord from words.js file to uppercase)
 
-    **Before**
+  **Before**
   ``` javascript
    todaysWord = wordArray[Math.floor(Math.random() * wordArray.length)];
   ```
@@ -56,7 +56,20 @@ Here are the bugs that I encountered while following the tutorial:
   ``` javascript
    todaysWord = wordArray[Math.floor(Math.random() * wordArray.length)].toUpperCase();
   ```
-- If the word that you entered is not a word, but it is the sixth attempt, it still counts as an attempt and the game over is triggered. (Not fixed yet)
+- If the word that you entered is not a word, but it is the sixth attempt, it still counts as an attempt and the game over is triggered. (Modified the 'onEnter' function condition in the App.jsx file to assess the final attempt, which previously did not verify whether the entered sequence was an actual word from the bank.)
+
+  **Before**
+  ``` javascript
+    if (currAttempt.attempt === 5) {
+      setGameOver({ gameOver: true, guessedWord: false });
+    }
+  ```
+  **After**
+  ``` javascript
+    if (currAttempt.attempt === 5 && wordSet.has(currWord.toLowerCase())) {
+      setGameOver({ gameOver: true, guessedWord: false });
+    }
+  ```
 
   **In the next table you can see the bugs that were mentioned before**
 
