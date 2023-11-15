@@ -1,8 +1,45 @@
-# React + Vite
+<div align="center">
+  <img src="/IMAGES/NotWordle.png" alt="NotWordle Image">
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Wordle Clone in React
 
-Currently, two official plugins are available:
+This project was made following the [Build a Wordle Clone in REACTJS](https://www.youtube.com/watch?v=WDTNwmXUz2c) tutorial by [PedroTech](https://github.com/machadop1407) and deployed on Vercel <img src="/IMAGES/Vercel-Dark.svg" width=16 alt="Vercel Icon">. Go take a look of it: [NotWordle](https://not-wordle-navy.vercel.app/) <img src="/public/favicon.ico" width=16 alt="W Icon">.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Things that you can learn with this tutorial:
+
+- useEffect hook
+- useContext hook
+- useCallback hook
+- Conditional rendering
+- Matrix rendering
+
+### Bugs fixed within this tutorial: 
+
+Here are the bugs that I encountered while following the tutorial:
+
+- Letters that are on the word, but not in the right position were not being displayed in yellow. (Changed to uppercase the correct word in almost const of the Letter.jsx file)
+  
+  **Before**
+  ``` javascript
+   const almost =
+    !correct && letter !== "" && correctWord.includes(letter);
+  ```
+  **After**
+  ``` javascript
+   const almost =
+    !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
+  ``` 
+- GameOver component not being displayed when you guessed the correct word in any attempt. (Changed the todaysWord from words.js file to uppercas)
+
+    **Before**
+  ``` javascript
+   todaysWord = wordArray[Math.floor(Math.random() * wordArray.length)];
+  ```
+  **After**
+  ``` javascript
+   todaysWord = wordArray[Math.floor(Math.random() * wordArray.length)].toUpperCase();
+  ```
+- If the word that you entered is not a word, but it is the sixth attempt, it stills count as an attempt and the game over is triggered. (Not fixed yet)
+
+  **In the next images you can see the bugs thah where mentioned before**
