@@ -72,18 +72,21 @@ nav h1 {
   background-color: #43a047;
   color: #f6f6f6;
   border: transparent;
+  animation: flip 0.5s ease forwards;
 }
 
 #almost {
   background-color: #e4a81d;
   color: #f6f6f6;
   border: transparent;
+  animation: flip 0.5s ease forwards;
 }
 
 #error {
   background-color: #757575;
   color: #f6f6f6;
   border: transparent;
+  animation: flip 0.5s ease forwards;
 }
 
 .keyboard {
@@ -140,4 +143,19 @@ nav h1 {
 .gameOver {
   padding: 50px;
   color: #2f2f2f;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0);
+  }
+  45% {
+    transform: rotateX(90deg);
+  }
+  55% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
 }
