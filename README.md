@@ -42,4 +42,4 @@ Here are the bugs that I encountered while following the tutorial:
   ```
 - If the word that you entered is not a word, but it is the sixth attempt, it stills count as an attempt and the game over is triggered. (Not fixed yet)
 
-  **In the next images you can see the bugs thah where mentioned before**
+  **In the next images you can see the bugs that were mentioned before**
