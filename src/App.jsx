@@ -61,7 +61,7 @@ function App() {
       return;
     }
 
-    if (currAttempt.attempt === 5) {
+    if (currAttempt.attempt === 5 && wordSet.has(currWord.toLowerCase())) {
       setGameOver({ gameOver: true, guessedWord: false });
     }
   };

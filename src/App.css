@@ -1,10 +1,19 @@
 .App {
   text-align: center;
-  background-color: #121212;
+  background-color: #f6f6f6;
   width: 100vw;
   height: 100vh;
   /* display: flex; */
   color: white;
+}
+
+.game {
+  width: 100vw;
+  height: calc(100vh - 170px);
+  display: flex;
+  align-items: center;
+  padding-top: 50px;
+  flex-direction: column;
 }
 
 body {
@@ -15,8 +24,10 @@ body {
 nav {
   height: 60px;
   width: 100%;
-  margin: 0;
-  border-bottom: 1px solid grey;
+  padding-top: 10px;
+  /* margin-top: 10px; */
+  /* margin: 0; */
+  /* border-bottom: 1px solid grey; */
   display: grid;
   place-items: center;
 }
@@ -24,22 +35,14 @@ nav {
 nav h1 {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
-  color: white;
+  color: #2f2f2f;
   font-size: 45px;
-}
-.game {
-  width: 100vw;
-  height: calc(100vh - 170px);
-  display: flex;
-  align-items: center;
-  padding-top: 50px;
-  flex-direction: column;
 }
 
 .board {
   width: 450px;
   height: 550px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
 }
@@ -54,26 +57,33 @@ nav h1 {
 .letter {
   flex: 33%;
   height: 100%;
-  border: 1px solid grey;
+  border: 2px solid #e3e3e3;
+  border-radius: 4px;
   margin: 5px;
   display: grid;
   place-items: center;
   font-size: 30px;
   font-weight: bolder;
-  color: white;
+  color: #2f2f2f;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 #correct {
-  background-color: #528d4e;
+  background-color: #43a047;
+  color: #f6f6f6;
+  border: transparent;
 }
 
 #almost {
-  background-color: #b49f39;
+  background-color: #e4a81d;
+  color: #f6f6f6;
+  border: transparent;
 }
 
 #error {
-  background-color: #3a393c;
+  background-color: #757575;
+  color: #f6f6f6;
+  border: transparent;
 }
 
 .keyboard {
@@ -113,8 +123,8 @@ nav h1 {
   display: grid;
   place-items: center;
   font-size: 20px;
-  background-color: grey;
-  color: white;
+  background-color: #e2e8f0;
+  color: #2f2f2f;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
 }
@@ -123,5 +133,11 @@ nav h1 {
   width: 100px;
 }
 #disabled {
-  background-color: #3a393c;
+  background-color: #757575;
+  color: #f6f6f6;
+}
+
+.gameOver {
+  padding: 50px;
+  color: #2f2f2f;
 }
