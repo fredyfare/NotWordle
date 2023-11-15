@@ -4,7 +4,7 @@
   width: 100vw;
   height: 100vh;
   /* display: flex; */
-  color: white;
+  /* color: #e2e8f0; */
 }
 
 .game {
@@ -69,23 +69,20 @@ nav h1 {
 }
 
 #correct {
-  background-color: #43a047;
-  color: #f6f6f6;
-  border: transparent;
+  --background-color: #43a047;
+  --border-color: #43a047;
   animation: flip 0.5s ease forwards;
 }
 
 #almost {
-  background-color: #e4a81d;
-  color: #f6f6f6;
-  border: transparent;
+  --background-color: #e4a81d;
+  --border-color: #e4a81d;
   animation: flip 0.5s ease forwards;
 }
 
 #error {
-  background-color: #757575;
-  color: #f6f6f6;
-  border: transparent;
+  --background-color: #757575;
+  --border-color: #757575;
   animation: flip 0.5s ease forwards;
 }
 
@@ -137,7 +134,7 @@ nav h1 {
 }
 #disabled {
   background-color: #757575;
-  color: #f6f6f6;
+  color: #fff;
 }
 
 .gameOver {
@@ -148,14 +145,24 @@ nav h1 {
 @keyframes flip {
   0% {
     transform: rotateX(0);
+    background-color: #f6f6f6;
+    border-color: #e3e3e3;
   }
   45% {
     transform: rotateX(90deg);
+    background-color: #f6f6f6;
+    border-color: #e3e3e3;
   }
   55% {
     transform: rotateX(90deg);
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    color: #fff;
   }
   100% {
     transform: rotateX(0);
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    color: #fff;
   }
 }
