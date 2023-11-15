@@ -2,8 +2,8 @@
   <img src="/IMAGES/NotWordle.png" alt="NotWordle Image" width=750>
 </div>
 
-# Wordle Clone in React <img src="/IMAGES/React-Dark.svg" width=30 alt="React Icon">
-
+# Wordle Clone in React <img src="/IMAGES/React-Dark.svg" width=30 alt="React Icon"> <img src="/IMAGES/Vite-Dark.svg" width=30 alt="Vite Icon">
+ 
 This project was made following the [Build a Wordle Clone in REACTJS](https://www.youtube.com/watch?v=WDTNwmXUz2c) tutorial by [PedroTech](https://github.com/machadop1407) and deployed on Vercel <img src="/IMAGES/Vercel-Dark.svg" width=16 alt="Vercel Icon">. Go take a look of it: [NotWordle](https://not-wordle-navy.vercel.app/) <img src="/public/favicon.ico" width=16 alt="W Icon">.
 
 **This project was created solely to practice React. You can play the original Wordle game here: [Wordle](https://www.nytimes.com/games/wordle/index.html)**
