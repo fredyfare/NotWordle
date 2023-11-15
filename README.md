@@ -8,6 +8,20 @@ This project was made following the [Build a Wordle Clone in REACTJS](https://ww
 
 **This project was created solely to practice React. You can play the original Wordle game here: [Wordle](https://www.nytimes.com/games/wordle/index.html)**
 
+## How to run the project
+
+### Installing Dependencies
+
+```bash
+npm i
+```
+
+### Starting the Project
+
+```bash
+npm run dev
+```
+
 ### Things you can learn from this tutorial:
 
 - useEffect hook
