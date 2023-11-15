@@ -76,6 +76,30 @@ Here are the bugs that I encountered while following the tutorial:
   </tr>
 </table>
 
+### To Do
+
+<table>
+  <tr>
+    <th align="center">Task</th>
+    <th align="center">Completed?</th>
+  </tr>
+  <tr>
+    <td align="center">
+      Change design 
+    </td>
+    <td align="center">
+      :heavy_multiplication_x:
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      Create "Rush" mode 
+    </td>
+    <td align="center">
+      :heavy_multiplication_x:
+    </td>
+  </tr>
+</table>
 
 
 
