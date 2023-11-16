@@ -123,6 +123,16 @@ nav h1 {
   --border: 2px solid #757575;
   --color: #f6f6f6;
 }
+#almostKey {
+  --background-color: #e4a81d;
+  --border: 2px solid #e4a81d;
+  --color: #f6f6f6;
+}
+#correctKey {
+  --background-color: #43a047;
+  --border: 2px solid #43a047;
+  --color: #f6f6f6;
+}
 
 .gameOver {
   padding: 50px;

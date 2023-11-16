@@ -3,8 +3,14 @@ import Key from "../Key/Key";
 import { AppContext } from "../../App";
 
 function Keyboard() {
-  const { onEnter, onDelete, onSelectLetter, disabledLetters } =
-    useContext(AppContext);
+  const {
+    onEnter,
+    onDelete,
+    onSelectLetter,
+    disabledLetters,
+    almostLetters,
+    correctLetters,
+  } = useContext(AppContext);
 
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
@@ -46,10 +52,18 @@ function Keyboard() {
     <div className="keyboard" onKeyDown={handleKeyboard}>
       <div className="line1">
         {keys1.map((key) => {
+          const changeId = correctLetters.includes(key)
+            ? "correctKey"
+            : almostLetters.includes(key)
+            ? "almostKey"
+            : disabledLetters.includes(key)
+            ? "disabled"
+            : null;
+
           return (
             <Key
               keyVal={key}
-              disabled={disabledLetters.includes(key)}
+              id={changeId}
               animationDel={1 + 0 + keys1.indexOf(key) * 0.1}
             />
           );
@@ -57,10 +71,18 @@ function Keyboard() {
       </div>
       <div className="line2">
         {keys2.map((key) => {
+          const changeId = correctLetters.includes(key)
+            ? "correctKey"
+            : almostLetters.includes(key)
+            ? "almostKey"
+            : disabledLetters.includes(key)
+            ? "disabled"
+            : null;
+
           return (
             <Key
               keyVal={key}
-              disabled={disabledLetters.includes(key)}
+              id={changeId}
               animationDel={1 + 0.1 + keys2.indexOf(key) * 0.1}
             />
           );
@@ -69,10 +91,18 @@ function Keyboard() {
       <div className="line3">
         <Key keyVal={"ENTER"} bigKey={true} animationDel={1 + 0.2} />
         {keys3.map((key) => {
+          const changeId = correctLetters.includes(key)
+            ? "correctKey"
+            : almostLetters.includes(key)
+            ? "almostKey"
+            : disabledLetters.includes(key)
+            ? "disabled"
+            : null;
+
           return (
             <Key
               keyVal={key}
-              disabled={disabledLetters.includes(key)}
+              id={changeId}
               animationDel={1 + 0.2 + keys3.indexOf(key) * 0.1}
             />
           );
