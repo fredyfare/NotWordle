@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../App";
 
-function Key({ keyVal, bigKey, disabled }) {
+function Key({ keyVal, bigKey, disabled, animationDel }) {
   const { onSelectLetter, onDelete, onEnter } = useContext(AppContext);
 
   const selectLetter = () => {
@@ -19,6 +19,7 @@ function Key({ keyVal, bigKey, disabled }) {
       className="key"
       id={bigKey ? "big" : disabled ? "disabled" : null}
       onClick={selectLetter}
+      style={{ color: "#f6f6f6" ,animationDelay: `${animationDel}s` }}
     >
       {keyVal}
     </div>

@@ -2,6 +2,7 @@ import { useState, createContext, useEffect } from "react";
 import Board from "./components/Board/Board";
 import Keyboard from "./components/Keyboard/Keyboard";
 import GameOver from "./components/GameOver/GameOver";
+import Logo from "./components/Logo/Logo";
 import { boardDefault } from "./utils/words";
 import { generateWordSet } from "./utils/words";
 import "./App.css";
@@ -68,9 +69,7 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
-        <h1>NotWordle</h1>
-      </nav>
+      <Logo />
       <AppContext.Provider
         value={{
           board,
