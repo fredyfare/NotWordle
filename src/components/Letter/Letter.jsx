@@ -22,7 +22,11 @@ function Letter({ letterPos, attemptVal }) {
   }, [currAttempt.attempt]);
 
   return (
-    <div className="letter" id={letterState}>
+    <div
+      className="letter"
+      id={letterState}
+      style={{ animationDelay: `${attemptVal * 0.1 + letterPos * 0.1}s` }}
+    >
       {letter}
     </div>
   );
