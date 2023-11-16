@@ -14,6 +14,8 @@ function App() {
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letterPos: 0 });
   const [wordSet, setWordSet] = useState(new Set());
   const [disabledLetters, setDisabledLetters] = useState([]);
+  const [correctLetters, setCorrectLetters] = useState([]); // keyboard correct letters
+  const [almostLetters, setAlmostLetters] = useState([]); // keyboard almost letters
   const [correctWord, setCorrectWord] = useState("");
   const [gameOver, setGameOver] = useState({
     gameOver: false,
@@ -23,7 +25,8 @@ function App() {
   useEffect(() => {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
-      setCorrectWord(words.todaysWord);
+      // setCorrectWord(words.todaysWord);
+      setCorrectWord("REACT");
     });
   }, []);
 
@@ -82,6 +85,10 @@ function App() {
           correctWord,
           disabledLetters,
           setDisabledLetters,
+          correctLetters, // keyboard correct & almost modifications
+          setCorrectLetters,
+          almostLetters,
+          setAlmostLetters, // end keyboard correct & almost modifications
           gameOver,
           setGameOver,
         }}
