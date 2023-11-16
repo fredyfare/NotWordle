@@ -57,7 +57,6 @@ nav h1 {
 .letter {
   flex: 33%;
   height: 100%;
-  border: 2px solid #e3e3e3;
   border-radius: 4px;
   margin: 5px;
   display: grid;
@@ -66,24 +65,24 @@ nav h1 {
   font-weight: bolder;
   color: #2f2f2f;
   font-family: Arial, Helvetica, sans-serif;
-  /* animation: bounce 0.2s ease-in-out forwards; Maybe for a load animation */
+  animation: bounce 0.2s ease-in-out forwards;
 }
 
 #correct {
   --background-color: #43a047;
-  --border-color: #43a047;
+  --border: 2px solid #43a047;
   animation: flip 0.5s ease forwards;
 }
 
 #almost {
   --background-color: #e4a81d;
-  --border-color: #e4a81d;
+  --border: 2px solid #e4a81d;
   animation: flip 0.5s ease forwards;
 }
 
 #error {
   --background-color: #757575;
-  --border-color: #757575;
+  --border: 2px solid #757575;
   animation: flip 0.5s ease forwards;
 }
 
@@ -157,13 +156,13 @@ nav h1 {
   55% {
     transform: rotateX(90deg);
     background-color: var(--background-color);
-    border-color: var(--border-color);
+    border-color: var(--border);
     color: #fff;
   }
   100% {
     transform: rotateX(0);
     background-color: var(--background-color);
-    border-color: var(--border-color);
+    border-color: var(--border);
     color: #fff;
   }
 }
@@ -171,13 +170,13 @@ nav h1 {
 @keyframes bounce {
   0% {
     transform: scale(1);
-    border-color: #e3e3e3;
+    border: 2px solid #e3e3e3;
   }
   50% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
-    border-color: #2f2f2f;
+    border: 2px solid #e3e3e3;
   }
 }
