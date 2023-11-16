@@ -46,20 +46,38 @@ function Keyboard() {
     <div className="keyboard" onKeyDown={handleKeyboard}>
       <div className="line1">
         {keys1.map((key) => {
-          return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
+          return (
+            <Key
+              keyVal={key}
+              disabled={disabledLetters.includes(key)}
+              animationDel={1 + 0 + keys1.indexOf(key) * 0.1}
+            />
+          );
         })}
       </div>
       <div className="line2">
         {keys2.map((key) => {
-          return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
+          return (
+            <Key
+              keyVal={key}
+              disabled={disabledLetters.includes(key)}
+              animationDel={1 + 0.1 + keys2.indexOf(key) * 0.1}
+            />
+          );
         })}
       </div>
       <div className="line3">
-        <Key keyVal={"ENTER"} bigKey={true} />
+        <Key keyVal={"ENTER"} bigKey={true} animationDel={1 + 0.2} />
         {keys3.map((key) => {
-          return <Key keyVal={key} disabled={disabledLetters.includes(key)} />;
+          return (
+            <Key
+              keyVal={key}
+              disabled={disabledLetters.includes(key)}
+              animationDel={1 + 0.2 + keys3.indexOf(key) * 0.1}
+            />
+          );
         })}
-        <Key keyVal={"DELETE"} bigKey={true} />
+        <Key keyVal={"DELETE"} bigKey={true} animationDel={1 + 1} />
       </div>
     </div>
   );

@@ -21,11 +21,18 @@ function Letter({ letterPos, attemptVal }) {
     }
   }, [currAttempt.attempt]);
 
+  let animationDel;
+  if (letter !== "") {
+    animationDel = letterPos * 0.2; //flip delay animation
+  } else {
+    animationDel = attemptVal * 0.1 + letterPos * 0.1; //bounce delaya animation
+  }
+
   return (
     <div
-      className="letter"
+      className="letter l"
       id={letterState}
-      style={{ animationDelay: `${attemptVal * 0.1 + letterPos * 0.1}s` }}
+      style={{ animationDelay: `${animationDel}s` }}
     >
       {letter}
     </div>
