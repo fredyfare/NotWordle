@@ -40,7 +40,7 @@ function Letter({ letterPos, attemptVal }) {
 
   return (
     <div
-      className="letter l"
+      className="letter"
       id={letterState}
       style={{ animationDelay: `${animationDel}s` }}
     >
