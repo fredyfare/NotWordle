@@ -10,7 +10,13 @@ function Logo() {
     const interval = setInterval(() => {
       setLogoIndex((prevIndex) => {
         const nextIndex = prevIndex + 1;
-        return nextIndex >= logos.length ? 0 : nextIndex;
+
+        if (nextIndex >= logos.length) {
+          clearInterval(interval);
+          return prevIndex;
+        }
+
+        return nextIndex;
       });
     }, 3000);
 
