@@ -71,7 +71,9 @@ function App() {
 
   return (
     <div className="App">
-      <Logo />
+      <nav>
+        <Logo />
+      </nav>
       <AppContext.Provider
         value={{
           board,
