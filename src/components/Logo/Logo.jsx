@@ -10,7 +10,7 @@ function Logo() {
     const interval = setInterval(() => {
       setLogoIndex((prevIndex) => {
         const nextIndex = prevIndex + 1;
-        return nextIndex >= logos.length ? prevIndex : nextIndex;
+        return nextIndex >= logos.length ? 0 : nextIndex;
       });
     }, 3000);
 
@@ -23,28 +23,26 @@ function Logo() {
 
   const id = (letter, index) => {
     if (!correctLogo.includes(letter)) {
-      return "error"; // Si la letra no está en el logo, se considera un error y se muestra en gris
+      return "error";
     } else if (letter === correctLogo[index]) {
-      return "correct"; // Si la letra está en el logo y en la posición correcta, se muestra en verde
+      return "correct";
     } else {
-      return "almost"; // Si la letra está en el logo pero en la posición incorrecta, se muestra en amarillo
+      return "almost";
     }
   };
 
   return (
     <div className="logo-board">
-      {logoLetters.map((letter, index) => {
-        return (
-          <div
-            className="logo-letter"
-            key={index}
-            id={id(letter, index)}
-            style={{ animationDelay: `${index * 0.2}s` }}
-          >
-            {letter}
-          </div>
-        );
-      })}
+      {logoLetters.map((letter, index) => (
+        <div
+          className="logo-letter"
+          key={`${letter}-${index}-${logoIndex}`}
+          id={id(letter, index)}
+          style={{ animationDelay: `${index * 0.2}s` }}
+        >
+          {letter}
+        </div>
+      ))}
     </div>
   );
 }
