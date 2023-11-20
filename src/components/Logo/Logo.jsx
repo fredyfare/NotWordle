@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function Logo() {
-  const logos = ["LIKEREACT", "WORLDWIDE", "NOTWORDLE"];
+  const logos = ["CHOCOLATE", "NOTWORDLE"];
   const correctLogo = "NOTWORDLE";
   const [logoIndex, setLogoIndex] = useState(0);
   const [logoLetters, setLogoLetters] = useState(logos[0].split(""));
