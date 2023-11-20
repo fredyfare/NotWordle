@@ -11,6 +11,7 @@ function Keyboard() {
     disabledLetters,
     almostLetters,
     correctLetters,
+    gameOver,
   } = useContext(AppContext);
 
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
@@ -18,6 +19,10 @@ function Keyboard() {
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
   const handleKeyboard = useCallback((event) => {
+    if (gameOver.gameOver) {
+      return;
+    }
+
     if (event.key === "Enter") {
       onEnter();
     } else if (event.key === "Backspace") {
@@ -62,38 +67,37 @@ function Keyboard() {
   return (
     <div className="keyboard" onKeyDown={handleKeyboard}>
       <div className="line1">
-        {keys1.map((key) => {
-          return (
-            <Key
-              keyVal={key}
-              id={changeId(key)}
-              animationDel={1 + 0 + keys1.indexOf(key) * 0.1}
-            />
-          );
-        })}
+        {keys1.map((key, index) => (
+          <Key
+            key={index}
+            keyVal={key}
+            id={changeId(key)}
+            animationDel={1 + 0 + index * 0.1}
+          />
+        ))}
       </div>
+
       <div className="line2">
-        {keys2.map((key) => {
-          return (
-            <Key
-              keyVal={key}
-              id={changeId(key)}
-              animationDel={1 + 0.1 + keys2.indexOf(key) * 0.1}
-            />
-          );
-        })}
+        {keys2.map((key, index) => (
+          <Key
+            key={index}
+            keyVal={key}
+            id={changeId(key)}
+            animationDel={1 + 0.1 + index * 0.1}
+          />
+        ))}
       </div>
+
       <div className="line3">
         <Key keyVal={"ENTER"} bigKey={true} animationDel={1 + 0.2} />
-        {keys3.map((key) => {
-          return (
-            <Key
-              keyVal={key}
-              id={changeId(key)}
-              animationDel={1 + 0.2 + keys3.indexOf(key) * 0.1}
-            />
-          );
-        })}
+        {keys3.map((key, index) => (
+          <Key
+            key={index}
+            keyVal={key}
+            id={changeId(key)}
+            animationDel={1 + 0.2 + index * 0.1}
+          />
+        ))}
         <Key keyVal={"DELETE"} bigKey={true} animationDel={1 + 1} />
       </div>
     </div>

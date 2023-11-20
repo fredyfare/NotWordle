@@ -26,6 +26,7 @@ function App() {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
+      // setCorrectWord("REACT");
     });
   }, []);
 
@@ -86,17 +87,19 @@ function App() {
           correctWord,
           disabledLetters,
           setDisabledLetters,
-          correctLetters, // keyboard correct & almost modifications
+          correctLetters,
           setCorrectLetters,
           almostLetters,
-          setAlmostLetters, // end keyboard correct & almost modifications
+          setAlmostLetters,
           gameOver,
           setGameOver,
         }}
       >
         <div className="game">
           <Board />
-          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          {/* {gameOver.gameOver ? <GameOver /> : <Keyboard />} */}
+          <Keyboard />
+          {gameOver.gameOver && <GameOver />}
         </div>
       </AppContext.Provider>
     </div>

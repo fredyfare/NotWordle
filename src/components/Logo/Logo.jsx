@@ -25,7 +25,7 @@ function Logo() {
 
   useEffect(() => {
     setLogoLetters(logos[logoIndex].split(""));
-  }, [logoIndex, logos]);
+  }, [logoIndex, logos[logoIndex]]);
 
   const id = (letter, index) => {
     if (!correctLogo.includes(letter)) {

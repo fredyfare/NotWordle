@@ -41,7 +41,7 @@ function Letter({ letterPos, attemptVal }) {
   return (
     <div
       className="letter"
-      id={letterState}
+      id={letterState.toString()}
       style={{ animationDelay: `${animationDel}s` }}
     >
       {letter}
