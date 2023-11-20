@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useContext } from "react";
 import Key from "../Key/Key";
 import { AppContext } from "../../App";
-import Letter from "../Letter/Letter";
 
 function Keyboard() {
   const {
