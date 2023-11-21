@@ -5,9 +5,9 @@ import GameOver from "./components/GameOver/GameOver";
 import Logo from "./components/Logo/Logo";
 import { boardDefault } from "./utils/words";
 import { generateWordSet } from "./utils/words";
-import "./App.css";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 export const AppContext = createContext();
 
@@ -78,11 +78,43 @@ function App() {
     }
 
     if (currWord === correctWord) {
+      toast(correctWord, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "2",
+        transition: Slide,
+        style: {
+          background: "#757575",
+          userSelect: "none",
+        },
+      });
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
 
     if (currAttempt.attempt === 5 && wordSet.has(currWord.toLowerCase())) {
+      toast(correctWord, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "3",
+        transition: Slide,
+        style: {
+          background: "#757575",
+          userSelect: "none",
+        },
+      });
       setGameOver({ gameOver: true, guessedWord: false });
     }
   };
