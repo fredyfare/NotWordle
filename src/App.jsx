@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import Board from "./components/Board/Board";
 import Keyboard from "./components/Keyboard/Keyboard";
 import GameOver from "./components/GameOver/GameOver";
@@ -6,6 +6,8 @@ import Logo from "./components/Logo/Logo";
 import { boardDefault } from "./utils/words";
 import { generateWordSet } from "./utils/words";
 import "./App.css";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const AppContext = createContext();
 
@@ -57,7 +59,21 @@ function App() {
     if (wordSet.has(currWord.toLowerCase())) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 });
     } else {
-      alert("Word Not Found");
+      toast("Not a word", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "1",
+        transition: Slide,
+        style: {
+          background: "#757575",
+        },
+      });
     }
 
     if (currWord === correctWord) {
@@ -97,7 +113,7 @@ function App() {
       >
         <div className="game">
           <Board />
-          {/* {gameOver.gameOver ? <GameOver /> : <Keyboard />} */}
+          {!toast.isActive() ? <ToastContainer newestOnTop /> : null}
           <Keyboard />
           {gameOver.gameOver && <GameOver />}
         </div>
