@@ -72,6 +72,7 @@ function App() {
         transition: Slide,
         style: {
           background: "#757575",
+          userSelect: "none",
         },
       });
     }

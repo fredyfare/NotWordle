@@ -3,6 +3,7 @@
   background-color: #f6f6f6;
   width: 100vw;
   height: 100vh;
+  /* user-select: none; */
   /* display: flex; */
   /* color: #e2e8f0; */
 }
@@ -66,6 +67,7 @@ nav h1 {
   color: #2f2f2f;
   font-family: Arial, Helvetica, sans-serif;
   animation: bounce 0.2s ease-in-out forwards;
+  user-select: none;
 }
 
 #correct {
@@ -194,6 +196,7 @@ nav h1 {
   --color: #2f2f2f;
   --border: 2px solid #e3e3e3;
   animation: appear 0.2s ease-in-out forwards;
+  user-select: none;
 }
 
 @keyframes appear {
@@ -232,6 +235,7 @@ nav h1 {
   font-weight: bolder;
   color: #f6f6f6;
   font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
 }
 
 .modal {
