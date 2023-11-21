@@ -32,6 +32,16 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    if (gameOver.gameOver) {
+      const timer = setTimeout(() => {
+        setGameOver({ ...gameOver, renderGameOver: true });
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [gameOver.gameOver]);
+
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > 4) return;
     const newBoard = [...board];
@@ -148,7 +158,7 @@ function App() {
           <Board />
           {!toast.isActive() ? <ToastContainer newestOnTop /> : null}
           <Keyboard />
-          {gameOver.gameOver && <GameOver />}
+          {gameOver.renderGameOver && <GameOver />}
         </div>
       </AppContext.Provider>
     </div>
