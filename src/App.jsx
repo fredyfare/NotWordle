@@ -60,7 +60,25 @@ function App() {
 
   const onEnter = () => {
     let currWord = "";
-    if (currAttempt.letterPos !== 5) return;
+    if (currAttempt.letterPos !== 5) {
+      toast("Word not in the list", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "1",
+        transition: Slide,
+        style: {
+          background: "#757575",
+          userSelect: "none",
+        },
+      });
+      return;
+    }
 
     for (let i = 0; i < 5; i++) {
       currWord += board[currAttempt.attempt][i];
@@ -100,7 +118,7 @@ function App() {
         toastId: "2",
         transition: Slide,
         style: {
-          background: "#757575",
+          background: "#43a047",
           userSelect: "none",
         },
       });
@@ -152,6 +170,7 @@ function App() {
           setAlmostLetters,
           gameOver,
           setGameOver,
+          setCorrectWord,
         }}
       >
         <div className="game">
