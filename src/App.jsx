@@ -59,7 +59,7 @@ function App() {
     if (wordSet.has(currWord.toLowerCase())) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 });
     } else {
-      toast("Not a word", {
+      toast("Word not in the list", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: true,
