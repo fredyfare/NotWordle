@@ -36,9 +36,9 @@ function GameOver() {
         {gameOver.guessedWord ? (
           <h3>You guessed in {currAttempt.attempt} attempts</h3>
         ) : null}
-        <button className="restart-button" onClick={handleRestart}>
+        {/* <button className="restart-button" onClick={handleRestart}>
           Restart Game
-        </button>
+        </button> */}
       </div>
     </>,
     document.getElementById("portal")
