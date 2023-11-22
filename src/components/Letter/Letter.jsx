@@ -35,13 +35,13 @@ function Letter({ letterPos, attemptVal }) {
   if (letter !== "") {
     animationDel = letterPos * 0.2; //flip delay animation
   } else {
-    animationDel = attemptVal * 0.1 + letterPos * 0.1; //bounce delaya animation
+    animationDel = attemptVal * 0.1 + letterPos * 0.1; //bounce delay animation
   }
 
   return (
     <div
       className="letter"
-      id={letterState}
+      id={letterState.toString()}
       style={{ animationDelay: `${animationDel}s` }}
     >
       {letter}

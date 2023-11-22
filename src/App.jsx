@@ -1,10 +1,12 @@
-import { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import Board from "./components/Board/Board";
 import Keyboard from "./components/Keyboard/Keyboard";
 import GameOver from "./components/GameOver/GameOver";
 import Logo from "./components/Logo/Logo";
 import { boardDefault } from "./utils/words";
 import { generateWordSet } from "./utils/words";
+import { Slide, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 export const AppContext = createContext();
@@ -26,8 +28,19 @@ function App() {
     generateWordSet().then((words) => {
       setWordSet(words.wordSet);
       setCorrectWord(words.todaysWord);
+      // setCorrectWord("REACT");
     });
   }, []);
+
+  useEffect(() => {
+    if (gameOver.gameOver) {
+      const timer = setTimeout(() => {
+        setGameOver({ ...gameOver, renderGameOver: true });
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [gameOver.gameOver]);
 
   const onSelectLetter = (keyVal) => {
     if (currAttempt.letterPos > 4) return;
@@ -46,9 +59,27 @@ function App() {
   };
 
   const onEnter = () => {
-    if (currAttempt.letterPos !== 5) return;
-
     let currWord = "";
+    if (currAttempt.letterPos !== 5) {
+      toast("Word not in the list", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "1",
+        transition: Slide,
+        style: {
+          background: "#757575",
+          userSelect: "none",
+        },
+      });
+      return;
+    }
+
     for (let i = 0; i < 5; i++) {
       currWord += board[currAttempt.attempt][i];
     }
@@ -56,15 +87,62 @@ function App() {
     if (wordSet.has(currWord.toLowerCase())) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 });
     } else {
-      alert("Word Not Found");
+      toast("Word not in the list", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "1",
+        transition: Slide,
+        style: {
+          background: "#757575",
+          userSelect: "none",
+        },
+      });
     }
 
     if (currWord === correctWord) {
+      toast(correctWord, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "2",
+        transition: Slide,
+        style: {
+          background: "#43a047",
+          userSelect: "none",
+        },
+      });
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
 
     if (currAttempt.attempt === 5 && wordSet.has(currWord.toLowerCase())) {
+      toast(correctWord, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        theme: "dark",
+        toastId: "3",
+        transition: Slide,
+        style: {
+          background: "#757575",
+          userSelect: "none",
+        },
+      });
       setGameOver({ gameOver: true, guessedWord: false });
     }
   };
@@ -86,17 +164,20 @@ function App() {
           correctWord,
           disabledLetters,
           setDisabledLetters,
-          correctLetters, // keyboard correct & almost modifications
+          correctLetters,
           setCorrectLetters,
           almostLetters,
-          setAlmostLetters, // end keyboard correct & almost modifications
+          setAlmostLetters,
           gameOver,
           setGameOver,
+          setCorrectWord,
         }}
       >
         <div className="game">
           <Board />
-          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          {!toast.isActive() ? <ToastContainer newestOnTop /> : null}
+          <Keyboard />
+          {gameOver.renderGameOver && <GameOver />}
         </div>
       </AppContext.Provider>
     </div>

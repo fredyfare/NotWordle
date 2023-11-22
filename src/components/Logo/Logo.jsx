@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function Logo() {
-  const logos = ["LIKEREACT", "WORLDWIDE", "NOTWORDLE"];
+  const logos = ["NATLODLES", "NOTWORDLE"];
   const correctLogo = "NOTWORDLE";
   const [logoIndex, setLogoIndex] = useState(0);
   const [logoLetters, setLogoLetters] = useState(logos[0].split(""));
@@ -25,7 +25,7 @@ function Logo() {
 
   useEffect(() => {
     setLogoLetters(logos[logoIndex].split(""));
-  }, [logoIndex, logos]);
+  }, [logoIndex, logos[logoIndex]]);
 
   const id = (letter, index) => {
     if (!correctLogo.includes(letter)) {
