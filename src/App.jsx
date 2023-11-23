@@ -25,6 +25,9 @@ function App() {
   });
   const [isNewGame, setIsNewGame] = useState(false);
   const [isAnimationInProgress, setIsAnimationInProgress] = useState(false);
+  const [timer, setTimer] = useState(300);
+  const [guessedWordsList, setGuessedWordsList] = useState([]);
+  const [notGuessedWordsList, setNotGuessedWordsList] = useState([]);
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -128,12 +131,13 @@ function App() {
           userSelect: "none",
         },
       });
-      setGameOver({ gameOver: true, guessedWord: true });
+      // setGameOver({ gameOver: true, guessedWord: true });
+      setGuessedWordsList((prev) => [...prev, currWord]);
       setIsAnimationInProgress(true);
       setTimeout(() => {
         setIsAnimationInProgress(false);
-      }, 1000);
-      return;
+        handleNextBoard();
+      }, 2000);
     }
 
     if (currAttempt.attempt === 5 && wordSet.has(currWord.toLowerCase())) {
@@ -153,15 +157,17 @@ function App() {
           userSelect: "none",
         },
       });
+      setNotGuessedWordsList((prev) => [...prev, correctWord]);
       setIsAnimationInProgress(true);
       setTimeout(() => {
         setIsAnimationInProgress(false);
-      }, 1000);
-      setGameOver({ gameOver: true, guessedWord: false });
+        handleNextBoard();
+      }, 2000);
+      // setGameOver({ gameOver: true, guessedWord: false });
     }
   };
 
-  const handleRestart = async () => {
+  const handleNextBoard = async () => {
     const words = await generateWordSet();
     setIsNewGame(true);
 
@@ -175,10 +181,59 @@ function App() {
     }, 0);
   };
 
+  const handleRestart = async () => {
+    const words = await generateWordSet();
+    setIsNewGame(true);
+    setTimer(300);
+
+    setTimeout(() => {
+      setGuessedWordsList([]);
+      setNotGuessedWordsList([]);
+      setDisabledLetters([]);
+      setAlmostLetters([]);
+      setCorrectLetters([]);
+      setCurrAttempt({ attempt: 0, letterPos: 0 });
+      setGameOver({ gameOver: false, guessedWord: false });
+      setCorrectWord(words.todaysWord);
+    }, 0);
+  };
+
+  useEffect(() => {
+    const totalTimeInSeconds = 300;
+
+    setTimer(totalTimeInSeconds);
+
+    const countdown = () => {
+      setTimer((prevTimer) => {
+        if (prevTimer === 0) {
+          setGameOver({ gameOver: true, guessedWord: false });
+          return prevTimer;
+        }
+        return prevTimer - 1;
+      });
+    };
+
+    const interval = setInterval(countdown, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="App">
       <nav>
         <Logo />
+        <p style={{ fontWeight: "bold", fontSize: "20px", color: "#2f2f2f" }}>
+          Time Remaining:{" "}
+          <strong
+            style={{
+              color:
+                timer > 150 ? "#43a047" : timer > 60 ? "#e4a81d" : "#757575",
+            }}
+          >
+            {" "}
+            {timer} seconds{" "}
+          </strong>
+        </p>
       </nav>
       <AppContext.Provider
         value={{
@@ -202,15 +257,15 @@ function App() {
           isNewGame,
           setIsNewGame,
           isAnimationInProgress,
+          guessedWordsList,
+          notGuessedWordsList,
         }}
       >
         <div className="game">
           <Board />
           {!toast.isActive() ? <ToastContainer newestOnTop /> : null}
           <Keyboard />
-          {gameOver.renderGameOver && (
-            <GameOver handleRestart={handleRestart} />
-          )}
+          {gameOver.gameOver && <GameOver handleRestart={handleRestart} />}
         </div>
       </AppContext.Provider>
     </div>
