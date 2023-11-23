@@ -11,32 +11,32 @@ function Letter({ letterPos, attemptVal }) {
     setCorrectLetters,
     isNewGame,
     setIsNewGame,
-    // setBoard,
+    setBoard,
   } = useContext(AppContext);
 
-  const letter = board[attemptVal][letterPos];
-
-  if (isNewGame) {
-    setDisabledLetters([]);
-    setAlmostLetters([]);
-    setCorrectLetters([]);
-    for (let i = 0; i < 6; i++) {
-      for (let j = 0; j < 5; j++) {
-        board[i][j] = "";
-      }
-    }
-    setIsNewGame(false);
-  }
-
-  // useEffect(() => {
-  //   if (isNewGame) {
-  //     const newBoard = board.map((row) => row.map(() => ""));
-  //     setBoard(newBoard);
-  //     setIsNewGame(false);
-  //   }
-  // }, [isNewGame, board, setIsNewGame, setBoard]);
-
   // const letter = board[attemptVal][letterPos];
+
+  // if (isNewGame) {
+  //   setDisabledLetters([]);
+  //   setAlmostLetters([]);
+  //   setCorrectLetters([]);
+  //   for (let i = 0; i < 6; i++) {
+  //     for (let j = 0; j < 5; j++) {
+  //       board[i][j] = "";
+  //     }
+  //   }
+  //   setIsNewGame(false);
+  // }
+
+  useEffect(() => {
+    if (isNewGame) {
+      const newBoard = board.map((row) => row.map(() => ""));
+      setBoard(newBoard);
+      setIsNewGame(false);
+    }
+  }, [isNewGame, board, setIsNewGame, setBoard]);
+
+  const letter = board[attemptVal][letterPos];
 
   const correct = correctWord.toUpperCase()[letterPos] === letter;
   const almost =

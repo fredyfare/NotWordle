@@ -163,11 +163,16 @@ function App() {
 
   const handleRestart = async () => {
     const words = await generateWordSet();
-    // setBoard(boardDefault);
-    setCurrAttempt({ attempt: 0, letterPos: 0 });
-    setGameOver({ gameOver: false, guessedWord: false });
-    setCorrectWord(words.todaysWord);
     setIsNewGame(true);
+
+    setTimeout(() => {
+      setDisabledLetters([]);
+      setAlmostLetters([]);
+      setCorrectLetters([]);
+      setCurrAttempt({ attempt: 0, letterPos: 0 });
+      setGameOver({ gameOver: false, guessedWord: false });
+      setCorrectWord(words.todaysWord);
+    }, 0);
   };
 
   return (
