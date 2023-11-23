@@ -222,8 +222,17 @@ function App() {
     <div className="App">
       <nav>
         <Logo />
-        <p style={{ fontWeight: "bold", fontSize: "20px" }}>
-          Time Remaining: {timer} seconds
+        <p style={{ fontWeight: "bold", fontSize: "20px", color: "#2f2f2f" }}>
+          Time Remaining:{" "}
+          <strong
+            style={{
+              color:
+                timer > 150 ? "#43a047" : timer > 60 ? "#e4a81d" : "#757575",
+            }}
+          >
+            {" "}
+            {timer} seconds{" "}
+          </strong>
         </p>
       </nav>
       <AppContext.Provider
