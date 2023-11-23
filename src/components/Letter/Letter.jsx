@@ -17,6 +17,9 @@ function Letter({ letterPos, attemptVal }) {
   const letter = board[attemptVal][letterPos];
 
   if (isNewGame) {
+    setDisabledLetters([]);
+    setAlmostLetters([]);
+    setCorrectLetters([]);
     for (let i = 0; i < 6; i++) {
       for (let j = 0; j < 5; j++) {
         board[i][j] = "";
