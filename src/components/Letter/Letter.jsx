@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../App";
 
 function Letter({ letterPos, attemptVal }) {
@@ -13,6 +13,8 @@ function Letter({ letterPos, attemptVal }) {
     setIsNewGame,
     setBoard,
   } = useContext(AppContext);
+
+  const [clearAnimation, setClearAnimation] = useState(false);
 
   // const letter = board[attemptVal][letterPos];
 
@@ -33,6 +35,7 @@ function Letter({ letterPos, attemptVal }) {
       const newBoard = board.map((row) => row.map(() => ""));
       setBoard(newBoard);
       setIsNewGame(false);
+      setClearAnimation(true);
     }
   }, [isNewGame, board, setIsNewGame, setBoard]);
 
@@ -56,18 +59,27 @@ function Letter({ letterPos, attemptVal }) {
     }
   }, [currAttempt.attempt]);
 
-  let animationDel;
-  if (letter !== "") {
-    animationDel = letterPos * 0.2; //flip delay animation
-  } else {
-    animationDel = attemptVal * 0.1 + letterPos * 0.1; //bounce delay animation
-  }
+  // let animationDel;
+  // if (letter !== "") {
+  //   animationDel = letterPos * 0.2; //flip animation delay
+  // } else {
+  //   animationDel = attemptVal * 0.1 + letterPos * 0.1; //bounce animation delay
+  // }
+
+  let animationDel =
+    letter !== ""
+      ? letterPos * 0.2 // flip animation delay
+      : clearAnimation
+      ? attemptVal * 0.1 + letterPos * 0.1 // clear animation delay
+      : attemptVal * 0.1 + letterPos * 0.1; // bounce animation delay
 
   return (
     <div
       className="letter"
       id={letterState.toString()}
-      style={{ animationDelay: `${animationDel}s` }}
+      style={{
+        animationDelay: `${animationDel}s`,
+      }}
     >
       {letter}
     </div>
