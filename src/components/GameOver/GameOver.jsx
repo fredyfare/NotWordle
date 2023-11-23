@@ -1,26 +1,26 @@
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import { AppContext } from "../../App";
-import { boardDefault, generateWordSet } from "../../utils/words";
+// import { boardDefault, generateWordSet } from "../../utils/words";
 
-function GameOver() {
+function GameOver({ handleRestart }) {
   const {
     gameOver,
     currAttempt,
     correctWord,
-    setCorrectWord,
-    setBoard,
-    setCurrAttempt,
-    setGameOver,
+    // setCorrectWord,
+    // setBoard,
+    // setCurrAttempt,
+    // setGameOver,
   } = useContext(AppContext);
 
-  const handleRestart = async () => {
-    const words = await generateWordSet();
-    setBoard([...boardDefault]);
-    setCurrAttempt({ attempt: 0, letterPos: 0 });
-    setGameOver({ gameOver: false, guessedWord: false });
-    setCorrectWord(words.todaysWord);
-  };
+  // const handleRestart = async () => {
+  //   const words = await generateWordSet();
+  //   setBoard(boardDefault);
+  //   setCurrAttempt({ attempt: 0, letterPos: 0 });
+  //   setGameOver({ gameOver: false, guessedWord: false });
+  //   setCorrectWord(words.todaysWord);
+  // };
 
   return ReactDOM.createPortal(
     <>
@@ -36,9 +36,9 @@ function GameOver() {
         {gameOver.guessedWord ? (
           <h3>You guessed in {currAttempt.attempt} attempts</h3>
         ) : null}
-        {/* <button className="restart-button" onClick={handleRestart}>
+        <button className="restart-button" onClick={handleRestart}>
           Restart Game
-        </button> */}
+        </button>
       </div>
     </>,
     document.getElementById("portal")

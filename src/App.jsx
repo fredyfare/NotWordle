@@ -23,6 +23,7 @@ function App() {
     gameOver: false,
     guessedWord: false,
   });
+  const [isNewGame, setIsNewGame] = useState(false);
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -147,6 +148,15 @@ function App() {
     }
   };
 
+  const handleRestart = async () => {
+    const words = await generateWordSet();
+    // setBoard(boardDefault);
+    setCurrAttempt({ attempt: 0, letterPos: 0 });
+    setGameOver({ gameOver: false, guessedWord: false });
+    setCorrectWord(words.todaysWord);
+    setIsNewGame(true);
+  };
+
   return (
     <div className="App">
       <nav>
@@ -171,13 +181,17 @@ function App() {
           gameOver,
           setGameOver,
           setCorrectWord,
+          isNewGame,
+          setIsNewGame,
         }}
       >
         <div className="game">
           <Board />
           {!toast.isActive() ? <ToastContainer newestOnTop /> : null}
           <Keyboard />
-          {gameOver.renderGameOver && <GameOver />}
+          {gameOver.renderGameOver && (
+            <GameOver handleRestart={handleRestart} />
+          )}
         </div>
       </AppContext.Provider>
     </div>

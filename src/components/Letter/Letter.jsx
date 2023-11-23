@@ -9,9 +9,31 @@ function Letter({ letterPos, attemptVal }) {
     setDisabledLetters,
     setAlmostLetters,
     setCorrectLetters,
+    isNewGame,
+    setIsNewGame,
+    // setBoard,
   } = useContext(AppContext);
 
   const letter = board[attemptVal][letterPos];
+
+  if (isNewGame) {
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 5; j++) {
+        board[i][j] = "";
+      }
+    }
+    setIsNewGame(false);
+  }
+
+  // useEffect(() => {
+  //   if (isNewGame) {
+  //     const newBoard = board.map((row) => row.map(() => ""));
+  //     setBoard(newBoard);
+  //     setIsNewGame(false);
+  //   }
+  // }, [isNewGame, board, setIsNewGame, setBoard]);
+
+  // const letter = board[attemptVal][letterPos];
 
   const correct = correctWord.toUpperCase()[letterPos] === letter;
   const almost =
