@@ -23,6 +23,8 @@ function App() {
     gameOver: false,
     guessedWord: false,
   });
+  const [isNewGame, setIsNewGame] = useState(false);
+  const [isAnimationInProgress, setIsAnimationInProgress] = useState(false);
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -61,22 +63,22 @@ function App() {
   const onEnter = () => {
     let currWord = "";
     if (currAttempt.letterPos !== 5) {
-      toast("Word not in the list", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-        theme: "dark",
-        toastId: "1",
-        transition: Slide,
-        style: {
-          background: "#757575",
-          userSelect: "none",
-        },
-      });
+      // toast("Word not in the list", {
+      //   position: "top-center",
+      //   autoClose: 2000,
+      //   hideProgressBar: true,
+      //   closeOnClick: true,
+      //   pauseOnHover: false,
+      //   draggable: false,
+      //   progress: undefined,
+      //   theme: "dark",
+      //   toastId: "1",
+      //   transition: Slide,
+      //   style: {
+      //     background: "#757575",
+      //     userSelect: "none",
+      //   },
+      // });
       return;
     }
 
@@ -86,6 +88,10 @@ function App() {
 
     if (wordSet.has(currWord.toLowerCase())) {
       setCurrAttempt({ attempt: currAttempt.attempt + 1, letterPos: 0 });
+      setIsAnimationInProgress(true);
+      setTimeout(() => {
+        setIsAnimationInProgress(false);
+      }, 1000);
     } else {
       toast("Word not in the list", {
         position: "top-center",
@@ -123,6 +129,10 @@ function App() {
         },
       });
       setGameOver({ gameOver: true, guessedWord: true });
+      setIsAnimationInProgress(true);
+      setTimeout(() => {
+        setIsAnimationInProgress(false);
+      }, 1000);
       return;
     }
 
@@ -143,8 +153,26 @@ function App() {
           userSelect: "none",
         },
       });
+      setIsAnimationInProgress(true);
+      setTimeout(() => {
+        setIsAnimationInProgress(false);
+      }, 1000);
       setGameOver({ gameOver: true, guessedWord: false });
     }
+  };
+
+  const handleRestart = async () => {
+    const words = await generateWordSet();
+    setIsNewGame(true);
+
+    setTimeout(() => {
+      setDisabledLetters([]);
+      setAlmostLetters([]);
+      setCorrectLetters([]);
+      setCurrAttempt({ attempt: 0, letterPos: 0 });
+      setGameOver({ gameOver: false, guessedWord: false });
+      setCorrectWord(words.todaysWord);
+    }, 0);
   };
 
   return (
@@ -171,13 +199,18 @@ function App() {
           gameOver,
           setGameOver,
           setCorrectWord,
+          isNewGame,
+          setIsNewGame,
+          isAnimationInProgress,
         }}
       >
         <div className="game">
           <Board />
           {!toast.isActive() ? <ToastContainer newestOnTop /> : null}
           <Keyboard />
-          {gameOver.renderGameOver && <GameOver />}
+          {gameOver.renderGameOver && (
+            <GameOver handleRestart={handleRestart} />
+          )}
         </div>
       </AppContext.Provider>
     </div>

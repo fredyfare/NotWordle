@@ -126,6 +126,14 @@ Here are the bugs that I encountered while following the tutorial:
       :heavy_multiplication_x:
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      Restart game feature
+    </td>
+    <td align="center">
+      :heavy_multiplication_x:
+    </td>
+  </tr>
 </table>
 
 
