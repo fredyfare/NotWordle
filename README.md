@@ -115,7 +115,7 @@ Here are the bugs that I encountered while following the tutorial:
       Change design 
     </td>
     <td align="center">
-      :heavy_multiplication_x:
+      :heavy_check_mark:
     </td>
   </tr>
   <tr>
@@ -129,6 +129,14 @@ Here are the bugs that I encountered while following the tutorial:
   <tr>
     <td align="center">
       Restart game feature
+    </td>
+    <td align="center">
+      :heavy_check_mark:
+    </td>
+  </tr>
+    <tr>
+    <td align="center">
+      Responsive
     </td>
     <td align="center">
       :heavy_multiplication_x:
