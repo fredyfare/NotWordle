@@ -123,7 +123,7 @@ Here are the bugs that I encountered while following the tutorial:
       Create "Rush" mode 
     </td>
     <td align="center">
-      :heavy_multiplication_x:
+      :heavy_check_mark:
     </td>
   </tr>
   <tr>
@@ -136,7 +136,7 @@ Here are the bugs that I encountered while following the tutorial:
   </tr>
     <tr>
     <td align="center">
-      Responsive
+      Fully responsive
     </td>
     <td align="center">
       :heavy_multiplication_x:
